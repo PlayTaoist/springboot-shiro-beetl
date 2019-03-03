@@ -1,0 +1,53 @@
+# Tomcat
+server:
+    tomcat:
+        uri-encoding: UTF-8
+        max-threads: 1000
+        min-spare-threads: 30
+    port: 8002
+    session:
+        timeout:7200
+    context-path: /lion-admin
+# DataSource
+spring:
+  datasource:
+    name: druidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/springboot-shiro?useUnicode=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true
+      username: root
+      password: root
+      filters: stat,wall,slf4j,config
+      max-active: 100
+      initial-size: 1
+      max-wait: 60000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 'x' FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 50
+      max-pool-prepared-statement-per-connection-size: 20
+#mybatis的扫描包路径
+mybatis:
+  type-aliases-package: cn.codepeople.entity
+  mapper-locations:  classpath:cn/codepeople/mapper/*.xml
+# FastDFS
+# ===================================================================
+# 分布式文件系统FDFS配置
+# ===================================================================
+fdfs:
+  so-timeout: 1501
+  connect-timeout: 601 
+  thumb-image:             #缩略图生成参数
+    width: 150
+    height: 150
+  web-server-url: 192.168.0.137/
+  tracker-list: 192.168.0.137:22122
+#### beetl
+beetl:
+  suffix: html

@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+
+欢迎光临-${name}
+<hr/>
+
+<% if(so.hasPermission("sys:user:add")){ %>
+进入用户添加功能<a href="add">用户添加</a><br/>
+<% } %>
+<% if(so.hasPermission("sys:user:update")){ %>
+进入用户更新功能<a href="update">用户更新</a>
+<% } %>
+</body>
+</html>
