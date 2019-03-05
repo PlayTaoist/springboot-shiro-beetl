@@ -49,6 +49,7 @@ public class ShiroExt {
      * @param map
      * @return
      */
+    @SuppressWarnings("rawtypes")
     public String principal(Map map) {
             String strValue = null;
             if (getSubject() != null) {
@@ -151,7 +152,7 @@ public class ShiroExt {
             return !hasPermission(p);
     }
 
-    @SuppressWarnings({ "unchecked" })
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     private Object getPrincipalFromClassName(String type) {
             Object principal = null;
 
