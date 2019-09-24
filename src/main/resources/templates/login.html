@@ -3,16 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <title>登录页面</title>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.bootcss.com/jsencrypt/3.0.0-beta.1/jsencrypt.js"></script>
 </head>
 <body>
 
 <h3>小白兔系统</h3>
 
 <h3 style="color: red;">${msg!""}</h3>
-<form method="post" action="login">
-用户名<input type="text" name="name" /><br/>
-密码<input type="password" name="password" /><br/>
-<input type="submit" value="登录" />
-</form>
+<div>
+<button onclick="btn();"> 提交 </button>
+</div>
 </body>
 </html>
+<script>
+var PUBLIC_KEY = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDgTQG5aE2kvnS2wX9Qbx9YlNrMdeMhr2+7PS9kG+OmxuvPyOHxwB8HOl/k/jD5ds2m8et1pkfEXbn56D0sK/JANJYXoJBE79FHl6O4CjY5O/99cTTiupiIp7LFV1e7ITodPeXbCQUW/KtYiDV8YuPh19oQJU4d7Q5RKlYuE7KXawIDAQAB';
+//使用公钥加密
+var encrypt = new JSEncrypt();
+  //encrypt.setPrivateKey('-----BEGIN RSA PRIVATE KEY-----'+PRIVATE_KEY+'-----END RSA PRIVATE KEY-----');
+encrypt.setPublicKey(PUBLIC_KEY);
+function btn(){
+	var str = JSON.stringify({name:"张三" , password : "123456"});
+	var encrypted = encrypt.encrypt(str);
+	console.log('加密后数据:%o', encrypted);
+	$.ajax({
+	    url : "login",
+	    type : "post",
+	    contentType: 'application/json',
+	    data: encrypted,
+	});
+}
+</script>

@@ -9,11 +9,15 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import cn.shuibo.annotation.EnableSecurity;
+
 @SpringBootApplication
+@EnableSecurity
 @MapperScan("cn.codepeople.mapper.**")
 public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
+
 }

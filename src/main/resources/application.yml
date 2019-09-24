@@ -5,10 +5,8 @@ server:
         max-threads: 1000
         min-spare-threads: 30
     port: 8002
-    session:
-        timeout:7200
     servlet:
-        context-path: /sys
+        context-path: /sys        session:          timeout: 7200
 # DataSource
 spring:
   datasource:
@@ -16,7 +14,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/springboot-shiro?useUnicode=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true
+      url: jdbc:mysql://127.0.0.1:3383/sso?useUnicode=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true
       username: root
       password: root
       filters: stat,wall,slf4j,config
@@ -52,3 +50,20 @@ fdfs:
 #### beetl
 beetl:
   suffix: html
+# SSO
+# ===================================================================
+# 分布式文件系统SSO配置
+# ===================================================================  
+#cas配置
+cas:
+  client-name: mfgClient
+  server:
+    url: http://127.0.0.1:8080/cas
+  project:
+    url: http://127.0.0.1:8002/sys
+rsa:
+  encrypt:
+    open: true # 是否开启加密 true  or  false
+    showLog: true # 是否打印加解密log true  or  false
+    publicKey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDgTQG5aE2kvnS2wX9Qbx9YlNrMdeMhr2+7PS9kG+OmxuvPyOHxwB8HOl/k/jD5ds2m8et1pkfEXbn56D0sK/JANJYXoJBE79FHl6O4CjY5O/99cTTiupiIp7LFV1e7ITodPeXbCQUW/KtYiDV8YuPh19oQJU4d7Q5RKlYuE7KXawIDAQAB # RSA公钥
+    privateKey: MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAOBNAbloTaS+dLbBf1BvH1iU2sx14yGvb7s9L2Qb46bG68/I4fHAHwc6X+T+MPl2zabx63WmR8RdufnoPSwr8kA0lhegkETv0UeXo7gKNjk7/31xNOK6mIinssVXV7shOh095dsJBRb8q1iINXxi4+HX2hAlTh3tDlEqVi4TspdrAgMBAAECgYBuen+W6yETPBwQyE4FODagUvFSM96kAN1vxDtLe9EtnF0aA0AG6zJdRQtmpy1IMpQo3o+zayt+NQwdY55920d+HA938UIBbcrUJjqik3/EeE04M8hDfMq+/+HmadmgDC7dFuvNW+Ozo6ke6Qh8ZyEdXKm4/LqzmtEB2yXFCFchQQJBAPvPpuy9tFWWF/jEqAXDYdHmNj+PADfHAlCdG9JzRwFqvFxJzVuf6dFcIme2BIwrut5QlCNzYKFci4wav6wNN68CQQDkCDNosDhJ8I85Pgh7c9tY9IoezRl6RHTveNcK83mZD9QNICzUyTuTgvZIyko5lgv3Aarnv9YPEWjkZ7bfts8FAkAs4LU/PBAHsNhU3beUT13/qqfAbBv91Nn0xAtRVnoxJnSrffu7eKSTS3hWQ3pMAP8s3++G4ek22OeF8L54S2LBAkAksbUkGYdVTqKdgX/37bLUY7V+M17wL+fpSTbBimB84vEqk4zjSOaPXDmpiPPcxGp0ew43cMVPc2u/pXjmExLJAkAryDLD72MQhP18fcfXAzWLPIRdwKKuUV/YQVO1UDNWKGZvBlx7dd58jB8TgXSF22OTgQXCpuKL8h8V+ueVQIcb  #RSA私钥
