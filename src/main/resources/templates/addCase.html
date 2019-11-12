@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" th:src="@{static/bootstrap-3.3.7/dist/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{static/bootstrap-3.3.7/dist/js/bootstrap.min.js}"></script>
+<link th:href="@{static/bootstrap-3.3.7/dist/css/bootstrap.min.css}" rel="stylesheet"/>
+<title>案件管理添加页面</title>
+</head>
+<body>
+<br>
+<form class="form-horizontal">
+  <div class="form-group col-xs-8">
+    <label for="inputEmail3" class="col-sm-2 control-label">案件编号</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="caseCode" placeholder="案件编号">
+    </div>
+  </div>
+
+<div class="form-group col-xs-8">
+    <label for="inputEmail3" class="col-sm-2 control-label">案件名称</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="caseName" placeholder="案件名称">
+    </div>
+  </div>
+
+<div class="form-group col-xs-8">
+    <label for="inputEmail3" class="col-sm-2 control-label">办案人</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="handleName" placeholder="办案人">
+    </div>
+  </div>
+  
+  <div class="form-group col-xs-8">
+    <label for="inputEmail3" class="col-sm-2 control-label">办案单位</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="handleOrgan" placeholder="办案单位">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="text" class="btn btn-default" onclick="btn();">提交</button>
+    </div>
+  </div>
+</form>
+</body>
+</html>
+
+<script>
+//使用公钥加密
+function btn(){
+    var str = JSON.stringify({appcode:$("#caseCode").val() , casename : $("#caseName").val() , handlename : $("#handleName").val(), handleorgan : $("#handleOrgan").val()});
+    
+    debugger
+    $.ajax({
+        url : "addCase",
+        type : "post",
+        contentType: 'application/json',
+        data: str,
+    });
+}
+</script>

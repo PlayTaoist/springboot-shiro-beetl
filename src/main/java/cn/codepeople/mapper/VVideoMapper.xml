@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.codepeople.mapper.VVideoMapper">
+  <resultMap id="BaseResultMap" type="cn.codepeople.entity.VVideo">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="CREATEUSERID" jdbcType="VARCHAR" property="createuserid" />
+    <result column="UPDATEUSERID" jdbcType="VARCHAR" property="updateuserid" />
+    <result column="CREATEUSERNAME" jdbcType="VARCHAR" property="createusername" />
+    <result column="UPDATEUSERNAME" jdbcType="VARCHAR" property="updateusername" />
+    <result column="DELETED" jdbcType="BIT" property="deleted" />
+    <result column="VIDEONAME" jdbcType="VARCHAR" property="videoname" />
+    <result column="ENABLED" jdbcType="BIT" property="enabled" />
+    <result column="SORTNUMBER" jdbcType="BIGINT" property="sortnumber" />
+    <result column="ONLINE" jdbcType="BIT" property="online" />
+    <result column="GROUPID" jdbcType="VARCHAR" property="groupid" />
+    <result column="CAMERATYPE" jdbcType="VARCHAR" property="cameratype" />
+    <result column="ENCODERUUID" jdbcType="VARCHAR" property="encoderuuid" />
+    <result column="MEMO" jdbcType="VARCHAR" property="memo" />
+    <result column="typeId" jdbcType="VARCHAR" property="typeid" />
+    <result column="TYPENAME" jdbcType="VARCHAR" property="typename" />
+    <result column="OPERATORSHORTHAND" jdbcType="VARCHAR" property="operatorshorthand" />
+    <result column="FAULTTIME" jdbcType="TIMESTAMP" property="faulttime" />
+    <result column="REPORTTIME" jdbcType="TIMESTAMP" property="reporttime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, UPDATE_TIME, CREATETIME, CREATEUSERID, UPDATEUSERID, CREATEUSERNAME, UPDATEUSERNAME, 
+    DELETED, VIDEONAME, ENABLED, SORTNUMBER, ONLINE, GROUPID, CAMERATYPE, ENCODERUUID, 
+    MEMO, typeId, TYPENAME, OPERATORSHORTHAND, FAULTTIME, REPORTTIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from v_video
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectListVideo"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from v_video
+    where ID like concat('%dx%')
+   </select>
+   
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from v_video
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.codepeople.entity.VVideo">
+    insert into v_video (ID, UPDATE_TIME, CREATETIME, 
+      CREATEUSERID, UPDATEUSERID, CREATEUSERNAME, 
+      UPDATEUSERNAME, DELETED, VIDEONAME, 
+      ENABLED, SORTNUMBER, ONLINE, 
+      GROUPID, CAMERATYPE, ENCODERUUID, 
+      MEMO, typeId, TYPENAME, 
+      OPERATORSHORTHAND, FAULTTIME, REPORTTIME
+      )
+    values (#{id,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{createuserid,jdbcType=VARCHAR}, #{updateuserid,jdbcType=VARCHAR}, #{createusername,jdbcType=VARCHAR}, 
+      #{updateusername,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT}, #{videoname,jdbcType=VARCHAR}, 
+      #{enabled,jdbcType=BIT}, #{sortnumber,jdbcType=BIGINT}, #{online,jdbcType=BIT}, 
+      #{groupid,jdbcType=VARCHAR}, #{cameratype,jdbcType=VARCHAR}, #{encoderuuid,jdbcType=VARCHAR}, 
+      #{memo,jdbcType=VARCHAR}, #{typeid,jdbcType=VARCHAR}, #{typename,jdbcType=VARCHAR}, 
+      #{operatorshorthand,jdbcType=VARCHAR}, #{faulttime,jdbcType=TIMESTAMP}, #{reporttime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.codepeople.entity.VVideo">
+    insert into v_video
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="createuserid != null">
+        CREATEUSERID,
+      </if>
+      <if test="updateuserid != null">
+        UPDATEUSERID,
+      </if>
+      <if test="createusername != null">
+        CREATEUSERNAME,
+      </if>
+      <if test="updateusername != null">
+        UPDATEUSERNAME,
+      </if>
+      <if test="deleted != null">
+        DELETED,
+      </if>
+      <if test="videoname != null">
+        VIDEONAME,
+      </if>
+      <if test="enabled != null">
+        ENABLED,
+      </if>
+      <if test="sortnumber != null">
+        SORTNUMBER,
+      </if>
+      <if test="online != null">
+        ONLINE,
+      </if>
+      <if test="groupid != null">
+        GROUPID,
+      </if>
+      <if test="cameratype != null">
+        CAMERATYPE,
+      </if>
+      <if test="encoderuuid != null">
+        ENCODERUUID,
+      </if>
+      <if test="memo != null">
+        MEMO,
+      </if>
+      <if test="typeid != null">
+        typeId,
+      </if>
+      <if test="typename != null">
+        TYPENAME,
+      </if>
+      <if test="operatorshorthand != null">
+        OPERATORSHORTHAND,
+      </if>
+      <if test="faulttime != null">
+        FAULTTIME,
+      </if>
+      <if test="reporttime != null">
+        REPORTTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuserid != null">
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuserid != null">
+        #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createusername != null">
+        #{createusername,jdbcType=VARCHAR},
+      </if>
+      <if test="updateusername != null">
+        #{updateusername,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="videoname != null">
+        #{videoname,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=BIT},
+      </if>
+      <if test="sortnumber != null">
+        #{sortnumber,jdbcType=BIGINT},
+      </if>
+      <if test="online != null">
+        #{online,jdbcType=BIT},
+      </if>
+      <if test="groupid != null">
+        #{groupid,jdbcType=VARCHAR},
+      </if>
+      <if test="cameratype != null">
+        #{cameratype,jdbcType=VARCHAR},
+      </if>
+      <if test="encoderuuid != null">
+        #{encoderuuid,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null">
+        #{typeid,jdbcType=VARCHAR},
+      </if>
+      <if test="typename != null">
+        #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorshorthand != null">
+        #{operatorshorthand,jdbcType=VARCHAR},
+      </if>
+      <if test="faulttime != null">
+        #{faulttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reporttime != null">
+        #{reporttime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.codepeople.entity.VVideo">
+    update v_video
+    <set>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuserid != null">
+        CREATEUSERID = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuserid != null">
+        UPDATEUSERID = #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createusername != null">
+        CREATEUSERNAME = #{createusername,jdbcType=VARCHAR},
+      </if>
+      <if test="updateusername != null">
+        UPDATEUSERNAME = #{updateusername,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        DELETED = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="videoname != null">
+        VIDEONAME = #{videoname,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null">
+        ENABLED = #{enabled,jdbcType=BIT},
+      </if>
+      <if test="sortnumber != null">
+        SORTNUMBER = #{sortnumber,jdbcType=BIGINT},
+      </if>
+      <if test="online != null">
+        ONLINE = #{online,jdbcType=BIT},
+      </if>
+      <if test="groupid != null">
+        GROUPID = #{groupid,jdbcType=VARCHAR},
+      </if>
+      <if test="cameratype != null">
+        CAMERATYPE = #{cameratype,jdbcType=VARCHAR},
+      </if>
+      <if test="encoderuuid != null">
+        ENCODERUUID = #{encoderuuid,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null">
+        typeId = #{typeid,jdbcType=VARCHAR},
+      </if>
+      <if test="typename != null">
+        TYPENAME = #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorshorthand != null">
+        OPERATORSHORTHAND = #{operatorshorthand,jdbcType=VARCHAR},
+      </if>
+      <if test="faulttime != null">
+        FAULTTIME = #{faulttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reporttime != null">
+        REPORTTIME = #{reporttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.codepeople.entity.VVideo">
+    update v_video
+    set UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      CREATEUSERID = #{createuserid,jdbcType=VARCHAR},
+      UPDATEUSERID = #{updateuserid,jdbcType=VARCHAR},
+      CREATEUSERNAME = #{createusername,jdbcType=VARCHAR},
+      UPDATEUSERNAME = #{updateusername,jdbcType=VARCHAR},
+      DELETED = #{deleted,jdbcType=BIT},
+      VIDEONAME = #{videoname,jdbcType=VARCHAR},
+      ENABLED = #{enabled,jdbcType=BIT},
+      SORTNUMBER = #{sortnumber,jdbcType=BIGINT},
+      ONLINE = #{online,jdbcType=BIT},
+      GROUPID = #{groupid,jdbcType=VARCHAR},
+      CAMERATYPE = #{cameratype,jdbcType=VARCHAR},
+      ENCODERUUID = #{encoderuuid,jdbcType=VARCHAR},
+      MEMO = #{memo,jdbcType=VARCHAR},
+      typeId = #{typeid,jdbcType=VARCHAR},
+      TYPENAME = #{typename,jdbcType=VARCHAR},
+      OPERATORSHORTHAND = #{operatorshorthand,jdbcType=VARCHAR},
+      FAULTTIME = #{faulttime,jdbcType=TIMESTAMP},
+      REPORTTIME = #{reporttime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

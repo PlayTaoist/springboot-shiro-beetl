@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.codepeople.mapper.VVideotypeMapper">
+  <resultMap id="BaseResultMap" type="cn.codepeople.entity.VVideotype">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="CREATEUSERID" jdbcType="VARCHAR" property="createuserid" />
+    <result column="UPDATEUSERID" jdbcType="VARCHAR" property="updateuserid" />
+    <result column="CREATEUSERNAME" jdbcType="VARCHAR" property="createusername" />
+    <result column="UPDATEUSERNAME" jdbcType="VARCHAR" property="updateusername" />
+    <result column="DELETED" jdbcType="BIT" property="deleted" />
+    <result column="TYPENAME" jdbcType="VARCHAR" property="typename" />
+    <result column="SORTNUMBER" jdbcType="VARCHAR" property="sortnumber" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="PARENTTYPE" jdbcType="VARCHAR" property="parenttype" />
+    <result column="REGIONCODE" jdbcType="VARCHAR" property="regioncode" />
+    <result column="GROUPID" jdbcType="VARCHAR" property="groupid" />
+    <result column="CARRIEROPERATOR" jdbcType="VARCHAR" property="carrieroperator" />
+    <result column="OPERATORTELEPHONE" jdbcType="VARCHAR" property="operatortelephone" />
+    <result column="OPERATORSHORTHAND" jdbcType="VARCHAR" property="operatorshorthand" />
+    <result column="SORTNUM" jdbcType="INTEGER" property="sortnum" />
+    <result column="SN" jdbcType="INTEGER" property="sn" />
+    <result column="VN" jdbcType="INTEGER" property="vn" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="REALID" jdbcType="VARCHAR" property="realid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, UPDATE_TIME, CREATETIME, CREATEUSERID, UPDATEUSERID, CREATEUSERNAME, UPDATEUSERNAME, 
+    DELETED, TYPENAME, SORTNUMBER, DESCRIPTION, PARENTTYPE, REGIONCODE, GROUPID, CARRIEROPERATOR, 
+    OPERATORTELEPHONE, OPERATORSHORTHAND, SORTNUM, SN, VN, ADDRESS, REALID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from v_videotype
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  
+  <select id="selectListVO"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from v_videotype
+    where ID like concat('%dx%')
+   </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from v_videotype
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.codepeople.entity.VVideotype">
+    insert into v_videotype (ID, UPDATE_TIME, CREATETIME, 
+      CREATEUSERID, UPDATEUSERID, CREATEUSERNAME, 
+      UPDATEUSERNAME, DELETED, TYPENAME, 
+      SORTNUMBER, DESCRIPTION, PARENTTYPE, 
+      REGIONCODE, GROUPID, CARRIEROPERATOR, 
+      OPERATORTELEPHONE, OPERATORSHORTHAND, SORTNUM, 
+      SN, VN, ADDRESS, REALID
+      )
+    values (#{id,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{createuserid,jdbcType=VARCHAR}, #{updateuserid,jdbcType=VARCHAR}, #{createusername,jdbcType=VARCHAR}, 
+      #{updateusername,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT}, #{typename,jdbcType=VARCHAR}, 
+      #{sortnumber,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{parenttype,jdbcType=VARCHAR}, 
+      #{regioncode,jdbcType=VARCHAR}, #{groupid,jdbcType=VARCHAR}, #{carrieroperator,jdbcType=VARCHAR}, 
+      #{operatortelephone,jdbcType=VARCHAR}, #{operatorshorthand,jdbcType=VARCHAR}, #{sortnum,jdbcType=INTEGER}, 
+      #{sn,jdbcType=INTEGER}, #{vn,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{realid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.codepeople.entity.VVideotype">
+    insert into v_videotype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="createuserid != null">
+        CREATEUSERID,
+      </if>
+      <if test="updateuserid != null">
+        UPDATEUSERID,
+      </if>
+      <if test="createusername != null">
+        CREATEUSERNAME,
+      </if>
+      <if test="updateusername != null">
+        UPDATEUSERNAME,
+      </if>
+      <if test="deleted != null">
+        DELETED,
+      </if>
+      <if test="typename != null">
+        TYPENAME,
+      </if>
+      <if test="sortnumber != null">
+        SORTNUMBER,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="parenttype != null">
+        PARENTTYPE,
+      </if>
+      <if test="regioncode != null">
+        REGIONCODE,
+      </if>
+      <if test="groupid != null">
+        GROUPID,
+      </if>
+      <if test="carrieroperator != null">
+        CARRIEROPERATOR,
+      </if>
+      <if test="operatortelephone != null">
+        OPERATORTELEPHONE,
+      </if>
+      <if test="operatorshorthand != null">
+        OPERATORSHORTHAND,
+      </if>
+      <if test="sortnum != null">
+        SORTNUM,
+      </if>
+      <if test="sn != null">
+        SN,
+      </if>
+      <if test="vn != null">
+        VN,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="realid != null">
+        REALID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuserid != null">
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuserid != null">
+        #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createusername != null">
+        #{createusername,jdbcType=VARCHAR},
+      </if>
+      <if test="updateusername != null">
+        #{updateusername,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="typename != null">
+        #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="sortnumber != null">
+        #{sortnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="parenttype != null">
+        #{parenttype,jdbcType=VARCHAR},
+      </if>
+      <if test="regioncode != null">
+        #{regioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="groupid != null">
+        #{groupid,jdbcType=VARCHAR},
+      </if>
+      <if test="carrieroperator != null">
+        #{carrieroperator,jdbcType=VARCHAR},
+      </if>
+      <if test="operatortelephone != null">
+        #{operatortelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorshorthand != null">
+        #{operatorshorthand,jdbcType=VARCHAR},
+      </if>
+      <if test="sortnum != null">
+        #{sortnum,jdbcType=INTEGER},
+      </if>
+      <if test="sn != null">
+        #{sn,jdbcType=INTEGER},
+      </if>
+      <if test="vn != null">
+        #{vn,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="realid != null">
+        #{realid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.codepeople.entity.VVideotype">
+    update v_videotype
+    <set>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuserid != null">
+        CREATEUSERID = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuserid != null">
+        UPDATEUSERID = #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createusername != null">
+        CREATEUSERNAME = #{createusername,jdbcType=VARCHAR},
+      </if>
+      <if test="updateusername != null">
+        UPDATEUSERNAME = #{updateusername,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        DELETED = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="typename != null">
+        TYPENAME = #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="sortnumber != null">
+        SORTNUMBER = #{sortnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="parenttype != null">
+        PARENTTYPE = #{parenttype,jdbcType=VARCHAR},
+      </if>
+      <if test="regioncode != null">
+        REGIONCODE = #{regioncode,jdbcType=VARCHAR},
+      </if>
+      <if test="groupid != null">
+        GROUPID = #{groupid,jdbcType=VARCHAR},
+      </if>
+      <if test="carrieroperator != null">
+        CARRIEROPERATOR = #{carrieroperator,jdbcType=VARCHAR},
+      </if>
+      <if test="operatortelephone != null">
+        OPERATORTELEPHONE = #{operatortelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorshorthand != null">
+        OPERATORSHORTHAND = #{operatorshorthand,jdbcType=VARCHAR},
+      </if>
+      <if test="sortnum != null">
+        SORTNUM = #{sortnum,jdbcType=INTEGER},
+      </if>
+      <if test="sn != null">
+        SN = #{sn,jdbcType=INTEGER},
+      </if>
+      <if test="vn != null">
+        VN = #{vn,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="realid != null">
+        REALID = #{realid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.codepeople.entity.VVideotype">
+    update v_videotype
+    set UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      CREATEUSERID = #{createuserid,jdbcType=VARCHAR},
+      UPDATEUSERID = #{updateuserid,jdbcType=VARCHAR},
+      CREATEUSERNAME = #{createusername,jdbcType=VARCHAR},
+      UPDATEUSERNAME = #{updateusername,jdbcType=VARCHAR},
+      DELETED = #{deleted,jdbcType=BIT},
+      TYPENAME = #{typename,jdbcType=VARCHAR},
+      SORTNUMBER = #{sortnumber,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      PARENTTYPE = #{parenttype,jdbcType=VARCHAR},
+      REGIONCODE = #{regioncode,jdbcType=VARCHAR},
+      GROUPID = #{groupid,jdbcType=VARCHAR},
+      CARRIEROPERATOR = #{carrieroperator,jdbcType=VARCHAR},
+      OPERATORTELEPHONE = #{operatortelephone,jdbcType=VARCHAR},
+      OPERATORSHORTHAND = #{operatorshorthand,jdbcType=VARCHAR},
+      SORTNUM = #{sortnum,jdbcType=INTEGER},
+      SN = #{sn,jdbcType=INTEGER},
+      VN = #{vn,jdbcType=INTEGER},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      REALID = #{realid,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
