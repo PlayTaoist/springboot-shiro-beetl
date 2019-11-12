@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.codepeople.mapper.CaseMapper">
+  <resultMap id="BaseResultMap" type="cn.codepeople.entity.CaseEntity">
+    <id column="appCode" jdbcType="VARCHAR" property="appcode" />
+    <result column="caseCode" jdbcType="VARCHAR" property="casecode" />
+    <result column="caseName" jdbcType="VARCHAR" property="casename" />
+    <result column="fillinOrganization" jdbcType="VARCHAR" property="fillinorganization" />
+    <result column="caseType" jdbcType="VARCHAR" property="casetype" />
+    <result column="caseStartDate" jdbcType="VARCHAR" property="casestartdate" />
+    <result column="caseEndDate" jdbcType="VARCHAR" property="caseenddate" />
+    <result column="reportCaseAddress" jdbcType="VARCHAR" property="reportcaseaddress" />
+    <result column="reportCaseDate" jdbcType="VARCHAR" property="reportcasedate" />
+    <result column="findForm" jdbcType="VARCHAR" property="findform" />
+    <result column="occurSection" jdbcType="VARCHAR" property="occursection" />
+    <result column="briefCaseInfo" jdbcType="VARCHAR" property="briefcaseinfo" />
+    <result column="handleName" jdbcType="VARCHAR" property="handlename" />
+    <result column="handleOrgan" jdbcType="VARCHAR" property="handleorgan" />
+    <result column="transactPlace" jdbcType="VARCHAR" property="transactplace" />
+    <result column="caseState" jdbcType="VARCHAR" property="casestate" />
+    <result column="caseLabel" jdbcType="VARCHAR" property="caselabel" />
+    <result column="transactCaseCode" jdbcType="VARCHAR" property="transactcasecode" />
+    <result column="sonCaseType" jdbcType="VARCHAR" property="soncasetype" />
+    <result column="ifLimitCase" jdbcType="VARCHAR" property="iflimitcase" />
+    <result column="caseDetailAddress" jdbcType="VARCHAR" property="casedetailaddress" />
+    <result column="findTime" jdbcType="VARCHAR" property="findtime" />
+    <result column="injuredNum" jdbcType="VARCHAR" property="injurednum" />
+    <result column="deadNum" jdbcType="VARCHAR" property="deadnum" />
+    <result column="wastage" jdbcType="VARCHAR" property="wastage" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    appCode, caseCode, caseName, fillinOrganization, caseType, caseStartDate, caseEndDate, 
+    reportCaseAddress, reportCaseDate, findForm, occurSection, briefCaseInfo, handleName, 
+    handleOrgan, transactPlace, caseState, caseLabel, transactCaseCode, sonCaseType, 
+    ifLimitCase, caseDetailAddress, findTime, injuredNum, deadNum, wastage
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_yp_aj_ajjbxx
+    where appCode = #{appcode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_yp_aj_ajjbxx
+    where appCode = #{appcode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.codepeople.entity.CaseEntity">
+    insert into t_yp_aj_ajjbxx (appCode, caseCode, caseName, 
+      fillinOrganization, caseType, caseStartDate, 
+      caseEndDate, reportCaseAddress, reportCaseDate, 
+      findForm, occurSection, briefCaseInfo, 
+      handleName, handleOrgan, transactPlace, 
+      caseState, caseLabel, transactCaseCode, 
+      sonCaseType, ifLimitCase, caseDetailAddress, 
+      findTime, injuredNum, deadNum, 
+      wastage)
+    values (#{appcode,jdbcType=VARCHAR}, #{casecode,jdbcType=VARCHAR}, #{casename,jdbcType=VARCHAR}, 
+      #{fillinorganization,jdbcType=VARCHAR}, #{casetype,jdbcType=VARCHAR}, #{casestartdate,jdbcType=VARCHAR}, 
+      #{caseenddate,jdbcType=VARCHAR}, #{reportcaseaddress,jdbcType=VARCHAR}, #{reportcasedate,jdbcType=VARCHAR}, 
+      #{findform,jdbcType=VARCHAR}, #{occursection,jdbcType=VARCHAR}, #{briefcaseinfo,jdbcType=VARCHAR}, 
+      #{handlename,jdbcType=VARCHAR}, #{handleorgan,jdbcType=VARCHAR}, #{transactplace,jdbcType=VARCHAR}, 
+      #{casestate,jdbcType=VARCHAR}, #{caselabel,jdbcType=VARCHAR}, #{transactcasecode,jdbcType=VARCHAR}, 
+      #{soncasetype,jdbcType=VARCHAR}, #{iflimitcase,jdbcType=VARCHAR}, #{casedetailaddress,jdbcType=VARCHAR}, 
+      #{findtime,jdbcType=VARCHAR}, #{injurednum,jdbcType=VARCHAR}, #{deadnum,jdbcType=VARCHAR}, 
+      #{wastage,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.codepeople.entity.CaseEntity">
+    insert into t_yp_aj_ajjbxx
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appcode != null">
+        appCode,
+      </if>
+      <if test="casecode != null">
+        caseCode,
+      </if>
+      <if test="casename != null">
+        caseName,
+      </if>
+      <if test="fillinorganization != null">
+        fillinOrganization,
+      </if>
+      <if test="casetype != null">
+        caseType,
+      </if>
+      <if test="casestartdate != null">
+        caseStartDate,
+      </if>
+      <if test="caseenddate != null">
+        caseEndDate,
+      </if>
+      <if test="reportcaseaddress != null">
+        reportCaseAddress,
+      </if>
+      <if test="reportcasedate != null">
+        reportCaseDate,
+      </if>
+      <if test="findform != null">
+        findForm,
+      </if>
+      <if test="occursection != null">
+        occurSection,
+      </if>
+      <if test="briefcaseinfo != null">
+        briefCaseInfo,
+      </if>
+      <if test="handlename != null">
+        handleName,
+      </if>
+      <if test="handleorgan != null">
+        handleOrgan,
+      </if>
+      <if test="transactplace != null">
+        transactPlace,
+      </if>
+      <if test="casestate != null">
+        caseState,
+      </if>
+      <if test="caselabel != null">
+        caseLabel,
+      </if>
+      <if test="transactcasecode != null">
+        transactCaseCode,
+      </if>
+      <if test="soncasetype != null">
+        sonCaseType,
+      </if>
+      <if test="iflimitcase != null">
+        ifLimitCase,
+      </if>
+      <if test="casedetailaddress != null">
+        caseDetailAddress,
+      </if>
+      <if test="findtime != null">
+        findTime,
+      </if>
+      <if test="injurednum != null">
+        injuredNum,
+      </if>
+      <if test="deadnum != null">
+        deadNum,
+      </if>
+      <if test="wastage != null">
+        wastage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appcode != null">
+        #{appcode,jdbcType=VARCHAR},
+      </if>
+      <if test="casecode != null">
+        #{casecode,jdbcType=VARCHAR},
+      </if>
+      <if test="casename != null">
+        #{casename,jdbcType=VARCHAR},
+      </if>
+      <if test="fillinorganization != null">
+        #{fillinorganization,jdbcType=VARCHAR},
+      </if>
+      <if test="casetype != null">
+        #{casetype,jdbcType=VARCHAR},
+      </if>
+      <if test="casestartdate != null">
+        #{casestartdate,jdbcType=VARCHAR},
+      </if>
+      <if test="caseenddate != null">
+        #{caseenddate,jdbcType=VARCHAR},
+      </if>
+      <if test="reportcaseaddress != null">
+        #{reportcaseaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="reportcasedate != null">
+        #{reportcasedate,jdbcType=VARCHAR},
+      </if>
+      <if test="findform != null">
+        #{findform,jdbcType=VARCHAR},
+      </if>
+      <if test="occursection != null">
+        #{occursection,jdbcType=VARCHAR},
+      </if>
+      <if test="briefcaseinfo != null">
+        #{briefcaseinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="handlename != null">
+        #{handlename,jdbcType=VARCHAR},
+      </if>
+      <if test="handleorgan != null">
+        #{handleorgan,jdbcType=VARCHAR},
+      </if>
+      <if test="transactplace != null">
+        #{transactplace,jdbcType=VARCHAR},
+      </if>
+      <if test="casestate != null">
+        #{casestate,jdbcType=VARCHAR},
+      </if>
+      <if test="caselabel != null">
+        #{caselabel,jdbcType=VARCHAR},
+      </if>
+      <if test="transactcasecode != null">
+        #{transactcasecode,jdbcType=VARCHAR},
+      </if>
+      <if test="soncasetype != null">
+        #{soncasetype,jdbcType=VARCHAR},
+      </if>
+      <if test="iflimitcase != null">
+        #{iflimitcase,jdbcType=VARCHAR},
+      </if>
+      <if test="casedetailaddress != null">
+        #{casedetailaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="findtime != null">
+        #{findtime,jdbcType=VARCHAR},
+      </if>
+      <if test="injurednum != null">
+        #{injurednum,jdbcType=VARCHAR},
+      </if>
+      <if test="deadnum != null">
+        #{deadnum,jdbcType=VARCHAR},
+      </if>
+      <if test="wastage != null">
+        #{wastage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.codepeople.entity.CaseEntity">
+    update t_yp_aj_ajjbxx
+    <set>
+      <if test="casecode != null">
+        caseCode = #{casecode,jdbcType=VARCHAR},
+      </if>
+      <if test="casename != null">
+        caseName = #{casename,jdbcType=VARCHAR},
+      </if>
+      <if test="fillinorganization != null">
+        fillinOrganization = #{fillinorganization,jdbcType=VARCHAR},
+      </if>
+      <if test="casetype != null">
+        caseType = #{casetype,jdbcType=VARCHAR},
+      </if>
+      <if test="casestartdate != null">
+        caseStartDate = #{casestartdate,jdbcType=VARCHAR},
+      </if>
+      <if test="caseenddate != null">
+        caseEndDate = #{caseenddate,jdbcType=VARCHAR},
+      </if>
+      <if test="reportcaseaddress != null">
+        reportCaseAddress = #{reportcaseaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="reportcasedate != null">
+        reportCaseDate = #{reportcasedate,jdbcType=VARCHAR},
+      </if>
+      <if test="findform != null">
+        findForm = #{findform,jdbcType=VARCHAR},
+      </if>
+      <if test="occursection != null">
+        occurSection = #{occursection,jdbcType=VARCHAR},
+      </if>
+      <if test="briefcaseinfo != null">
+        briefCaseInfo = #{briefcaseinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="handlename != null">
+        handleName = #{handlename,jdbcType=VARCHAR},
+      </if>
+      <if test="handleorgan != null">
+        handleOrgan = #{handleorgan,jdbcType=VARCHAR},
+      </if>
+      <if test="transactplace != null">
+        transactPlace = #{transactplace,jdbcType=VARCHAR},
+      </if>
+      <if test="casestate != null">
+        caseState = #{casestate,jdbcType=VARCHAR},
+      </if>
+      <if test="caselabel != null">
+        caseLabel = #{caselabel,jdbcType=VARCHAR},
+      </if>
+      <if test="transactcasecode != null">
+        transactCaseCode = #{transactcasecode,jdbcType=VARCHAR},
+      </if>
+      <if test="soncasetype != null">
+        sonCaseType = #{soncasetype,jdbcType=VARCHAR},
+      </if>
+      <if test="iflimitcase != null">
+        ifLimitCase = #{iflimitcase,jdbcType=VARCHAR},
+      </if>
+      <if test="casedetailaddress != null">
+        caseDetailAddress = #{casedetailaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="findtime != null">
+        findTime = #{findtime,jdbcType=VARCHAR},
+      </if>
+      <if test="injurednum != null">
+        injuredNum = #{injurednum,jdbcType=VARCHAR},
+      </if>
+      <if test="deadnum != null">
+        deadNum = #{deadnum,jdbcType=VARCHAR},
+      </if>
+      <if test="wastage != null">
+        wastage = #{wastage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where appCode = #{appcode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.codepeople.entity.CaseEntity">
+    update t_yp_aj_ajjbxx
+    set caseCode = #{casecode,jdbcType=VARCHAR},
+      caseName = #{casename,jdbcType=VARCHAR},
+      fillinOrganization = #{fillinorganization,jdbcType=VARCHAR},
+      caseType = #{casetype,jdbcType=VARCHAR},
+      caseStartDate = #{casestartdate,jdbcType=VARCHAR},
+      caseEndDate = #{caseenddate,jdbcType=VARCHAR},
+      reportCaseAddress = #{reportcaseaddress,jdbcType=VARCHAR},
+      reportCaseDate = #{reportcasedate,jdbcType=VARCHAR},
+      findForm = #{findform,jdbcType=VARCHAR},
+      occurSection = #{occursection,jdbcType=VARCHAR},
+      briefCaseInfo = #{briefcaseinfo,jdbcType=VARCHAR},
+      handleName = #{handlename,jdbcType=VARCHAR},
+      handleOrgan = #{handleorgan,jdbcType=VARCHAR},
+      transactPlace = #{transactplace,jdbcType=VARCHAR},
+      caseState = #{casestate,jdbcType=VARCHAR},
+      caseLabel = #{caselabel,jdbcType=VARCHAR},
+      transactCaseCode = #{transactcasecode,jdbcType=VARCHAR},
+      sonCaseType = #{soncasetype,jdbcType=VARCHAR},
+      ifLimitCase = #{iflimitcase,jdbcType=VARCHAR},
+      caseDetailAddress = #{casedetailaddress,jdbcType=VARCHAR},
+      findTime = #{findtime,jdbcType=VARCHAR},
+      injuredNum = #{injurednum,jdbcType=VARCHAR},
+      deadNum = #{deadnum,jdbcType=VARCHAR},
+      wastage = #{wastage,jdbcType=VARCHAR}
+    where appCode = #{appcode,jdbcType=VARCHAR}
+  </update>
+</mapper>
