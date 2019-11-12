@@ -24,6 +24,7 @@
 		<buji.version>4.0.0</buji.version>
 		<pac4j.version>3.0.2</pac4j.version>
 		<hutool-all.version>4.5.10</hutool-all.version>
+		<joda-time.version>2.10.4</joda-time.version>
 	</properties>
 
 	<dependencies>
@@ -43,45 +44,20 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
-		<!-- 引入shiro的spring整合框架 -->
 		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-spring</artifactId>
-			<version>${shiro.version}</version>
-		</dependency>
-		<dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-cas</artifactId>
-            <version>${shiro.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-		 <dependency>
-            <groupId>io.buji</groupId>
-            <artifactId>buji-pac4j</artifactId>
-            <version>${buji.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>shiro-web</artifactId>
-                    <groupId>org.apache.shiro</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.pac4j</groupId>
-            <artifactId>pac4j-cas</artifactId>
-            <version>${pac4j.version}</version>
-        </dependency>
+		<!-- <dependency>
+            <groupId>com.ibeetl</groupId>
+            <artifactId>beetl-framework-starter</artifactId>
+            <version>${beetl.version}</version>
+        </dependency> -->
         <dependency>
 		    <groupId>cn.hutool</groupId>
 		    <artifactId>hutool-all</artifactId>
 		    <version>${hutool-all.version}</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.ibeetl/beetl-framework-starter -->
-		<dependency>
-			<groupId>com.ibeetl</groupId>
-			<artifactId>beetl-framework-starter</artifactId>
-			<version>${beetl.version}</version>
-		</dependency>
-
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
@@ -92,22 +68,30 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
 		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>${mybatis.version}</version>
-		</dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+		<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
 		<dependency>
-		    <groupId>cn.shuibo</groupId>
-		    <artifactId>rsa-encrypt-body-spring-boot</artifactId>
-		    <version>1.0.1.RELEASE</version>
+		    <groupId>joda-time</groupId>
+		    <artifactId>joda-time</artifactId>
+		    <version>${joda-time.version}</version>
 		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi-ooxml</artifactId>
+		    <version>4.1.0</version>
 		</dependency>
 
 	</dependencies>
