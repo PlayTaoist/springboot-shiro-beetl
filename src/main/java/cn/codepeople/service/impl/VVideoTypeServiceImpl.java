@@ -104,28 +104,28 @@ public class VVideoTypeServiceImpl implements VVideoTypeService {
 	}
 
 	public int getVideoMaxId() {
-		String maxId="0";
+		Integer maxId=0;
 		List<VVideo> listVideo = videoMapper.selectListVideo();
-		List<String> listId = new ArrayList<>();
+		List<Integer> listId = new ArrayList<>();
 		if (listVideo.size()>0) {
 			for (VVideo vVideo : listVideo) {
-				listId.add(vVideo.getId().substring(3));
+				listId.add(Integer.valueOf(vVideo.getId().substring(3)));
 			}
-			maxId = (String) Collections.max(listId);
+			maxId = (Integer) Collections.max(listId);
 		}
 		log.info("=======>Video电信摄像头最大ID{}",maxId);
 		return Integer.valueOf(maxId);
 	}
 
 	public int getVideoTypeMaxId() {
-		String maxId="0";
+		Integer maxId=0;
 		List<VVideotype> listVideo = vMapper.selectListVO();
-		List<String> listId = new ArrayList<>();
+		List<Integer> listId = new ArrayList<>();
 		if (listVideo.size()>0) {
 			for (VVideotype vVideo : listVideo) {
-				listId.add(vVideo.getId().substring(3));
+				listId.add(Integer.valueOf(vVideo.getId().substring(3)));
 			}
-			maxId = (String) Collections.max(listId);
+			maxId = (Integer) Collections.max(listId);
 		}
 		log.info("=======>VideoType电信摄像头最大ID{}",maxId);
 		return Integer.valueOf(maxId);
